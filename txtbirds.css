@@ -1,0 +1,30 @@
+#gyre {
+    position: absolute;
+    background-color: #EEE;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	overflow: hidden;
+}
+
+.falcon {
+    position: absolute;
+    font-family: monospace;
+    font-size: 48px;  
+	white-space: nowrap;
+}
+
+.falcon.flying {
+    -webkit-transition: top, left, font-size, color, margin;
+    -webkit-transition-duration: 10s, 10s, 10s, 10s, 0.95s;
+    -webkit-transition-timing-function: ease-out, ease-out, ease-out, ease-out, ease-out;
+	-webkit-transform: translateZ(0);
+    transition: top, left, font-size, color, margin;
+    transition-duration: 10s, 10s, 10s, 10s, 0.95s;
+    transition-timing-function: ease-out, ease-out, ease-out, ease-out, ease-out;
+    top: 50% !important;
+    left: 50% !important;
+    font-size: 0;
+    color: #EEE;
+}
