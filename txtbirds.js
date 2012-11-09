@@ -1,8 +1,8 @@
 (function () {
 	var root = this;
-	var gyre = root.document.getElementById("gyre");
+	var g = root.document.getElementById("gyre");
 
-	var Falcon = function () {
+	var Falcon = function (gyre) {
 		this.flaps = [ '------', '/‾\\/‾\\', '‾‾\\/‾‾' ];
 		this.flap_i = 0;
 		this.flap_rate = 230;
@@ -11,6 +11,7 @@
 		this.veer_coefficient_horizontal = 50;
 		this.lifespan = 15 * 1000;
 		this.timers = [];
+		this.gyre = gyre;
 	};
 
 	Falcon.prototype = {
@@ -21,7 +22,7 @@
 			[ "top", "left" ].forEach(function (s) { 
 				_this.el.style[s] = (50 + (root.Math.random() < 0.5 ? -1 : 1) * root.Math.random() * 80) + "%"; 
 			});
-			gyre.appendChild(this.el);
+			this.gyre.appendChild(this.el);
 			return this;
 		},
 		flap: function () { 
@@ -41,13 +42,13 @@
 		},
 		vanish: function () {
 			this.timers.forEach(function (t) { root.clearInterval(t); });
-			gyre.removeChild(this.el);
+			this.gyre.removeChild(this.el);
 			return this;
 		}
 	};
 
 	var launch = function () {
-		return (new Falcon()).hatch().fly();
+		return (new Falcon(g)).hatch().fly();
 	};
 
 	root.setInterval(launch, 730);
